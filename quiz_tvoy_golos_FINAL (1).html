@@ -6,6 +6,16 @@
 <title>Твой голос — Узнай, почему не получается петь</title>
 <meta property="og:title" content="Почему у вас не получается петь — и как это исправить за 1 занятие">
 <meta property="og:description" content="Пройдите тест — получите бесплатный пробный урок в студии вокала «Твой голос», Нижнекамск">
+
+<!-- Яндекс.Метрика: замените XXXXXXXX на ваш номер счётчика -->
+<!-- <script type="text/javascript">
+(function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+var z=e.createElement(t),st=e.getElementsByTagName(t)[0];
+z.async=!0;z.src=r;st.parentNode.insertBefore(z,st)})
+(window,document,'script','https://mc.yandex.ru/metrika/tag.js','ym');
+ym(XXXXXXXX,'init',{clickmap:true,trackLinks:true,accurateTrackBounce:true});
+</script> -->
+
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Golos+Text:wght@400;500;600;700&display=swap');
 
@@ -35,7 +45,6 @@ body{
   overflow-x:hidden;
 }
 
-/* grain texture */
 body::before{
   content:'';
   position:fixed;
@@ -54,7 +63,6 @@ body::before{
   z-index:1;
 }
 
-/* TOP BAR */
 .topbar{
   display:flex;
   align-items:center;
@@ -86,7 +94,6 @@ body::before{
 }
 .trust-badge strong{color:var(--gold);font-size:11px;}
 
-/* PROGRESS */
 .progress-track{
   height:3px;
   background:var(--border);
@@ -107,12 +114,10 @@ body::before{
   padding:10px 0 0;
 }
 
-/* SCREEN */
 .screen{display:none;}
 .screen.active{display:block;animation:rise .4s ease both;}
 @keyframes rise{from{opacity:0;transform:translateY(14px);}to{opacity:1;transform:translateY(0);}}
 
-/* URGENCY BANNER */
 .urgency{
   background:var(--gold-pale);
   border:1px solid rgba(184,136,42,.25);
@@ -135,7 +140,6 @@ body::before{
 }
 @keyframes pulse{0%,100%{opacity:1;}50%{opacity:.3;}}
 
-/* INTRO */
 .intro-wrap{
   padding:28px 0 8px;
   text-align:center;
@@ -191,7 +195,6 @@ body::before{
 }
 .pill-dot{width:5px;height:5px;border-radius:50%;background:var(--gold);}
 
-/* NAME STEP */
 .name-card{
   background:white;
   border:1px solid var(--border);
@@ -224,7 +227,6 @@ body::before{
 .name-input:focus{border-color:var(--gold);}
 .name-input::placeholder{color:var(--muted);}
 
-/* BUTTONS */
 .btn{
   display:block;
   width:100%;
@@ -249,7 +251,32 @@ body::before{
 }
 .btn-gold:hover{box-shadow:0 10px 32px rgba(184,136,42,.4);background:linear-gradient(135deg,#B88830,#E0B855);}
 
-/* QUESTION */
+.btn-outline{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:8px;
+  padding:14px 20px;
+  background:white;
+  color:var(--ink);
+  font-family:'Golos Text',sans-serif;
+  font-size:.9rem;
+  font-weight:700;
+  border:1.5px solid var(--border);
+  border-radius:12px;
+  cursor:pointer;
+  text-decoration:none;
+  transition:all .2s;
+}
+.btn-outline:hover{border-color:var(--gold);background:var(--gold-pale);}
+
+.social-row{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:10px;
+  margin-top:20px;
+}
+
 .q-head{
   padding:28px 0 20px;
 }
@@ -285,7 +312,6 @@ body::before{
 .opt-ico{font-size:26px;line-height:1;}
 .opt-lbl{font-size:.83rem;font-weight:600;color:var(--text);line-height:1.4;}
 
-/* RESULT */
 .confetti-row{text-align:center;font-size:32px;letter-spacing:4px;padding:24px 0 6px;animation:pop .5s ease;}
 @keyframes pop{from{transform:scale(.5);opacity:0;}70%{transform:scale(1.08);}to{transform:scale(1);opacity:1;}}
 .hail{
@@ -300,7 +326,7 @@ body::before{
 .profile-card{
   border-radius:20px;
   padding:28px 24px;
-  margin-bottom:16px;
+  margin-bottom:12px;
   position:relative;
   overflow:hidden;
 }
@@ -331,13 +357,34 @@ body::before{
   text-transform:uppercase;
 }
 
-/* profile colors */
 .pc-drama{background:#1E0810;color:#F5B0BE;}
 .pc-lyric{background:#071628;color:#90C4F0;}
 .pc-jazz{background:#170F02;color:#E8C06A;}
 .pc-pop{background:#0E0C22;color:#B0BCFF;}
 
-/* STEPS "что будет" */
+/* Диагноз */
+.diagnosis-card{
+  background:white;
+  border:1px solid var(--border);
+  border-left:3px solid var(--gold);
+  border-radius:0 14px 14px 0;
+  padding:18px 20px;
+  margin-bottom:16px;
+}
+.diagnosis-card .d-label{
+  font-size:10px;
+  font-weight:700;
+  letter-spacing:2px;
+  text-transform:uppercase;
+  color:var(--gold);
+  margin-bottom:8px;
+}
+.diagnosis-card .d-text{
+  font-size:.9rem;
+  color:var(--text);
+  line-height:1.65;
+}
+
 .lesson-steps{
   background:white;
   border:1px solid var(--border);
@@ -366,7 +413,6 @@ body::before{
 .lstep-text{font-size:.87rem;color:var(--text);line-height:1.5;padding-top:3px;}
 .lstep-text strong{color:var(--ink);display:block;font-size:.9rem;margin-bottom:1px;}
 
-/* URGENCY on result */
 .slots-box{
   background:var(--gold-pale);
   border:1px solid rgba(184,136,42,.3);
@@ -382,7 +428,6 @@ body::before{
 .slots-text{color:var(--text);line-height:1.4;}
 .slots-text strong{color:var(--rose);display:block;}
 
-/* TESTIMONIAL */
 .testimonial{
   background:var(--warm);
   border-left:3px solid var(--gold);
@@ -405,7 +450,6 @@ body::before{
 .ava-text p{font-size:.85rem;color:var(--text);line-height:1.55;font-style:italic;}
 .ava-text span{font-size:.78rem;color:var(--muted);font-weight:600;display:block;margin-top:5px;}
 
-/* FORM CARD */
 .form-card{
   background:white;
   border:1px solid var(--border);
@@ -446,7 +490,6 @@ body::before{
 .finput:focus{border-color:var(--gold);}
 .finput::placeholder{color:var(--muted);}
 
-/* FORM STEP 2 */
 .form-s2{display:none;}
 .days-row{display:grid;grid-template-columns:repeat(7,1fr);gap:5px;margin-bottom:6px;}
 .dday{
@@ -486,7 +529,6 @@ body::before{
 .fsel:focus{border-color:var(--gold);}
 .fsel option{background:white;}
 
-/* CONSENT */
 .consent-row{
   display:flex;
   gap:10px;
@@ -513,12 +555,10 @@ body::before{
   line-height:1.55;
 }
 
-/* ERROR */
 .errmsg{display:none;font-size:.75rem;color:var(--rose);font-weight:600;margin-top:4px;}
 .has-err .finput,.has-err .fsel{border-color:var(--rose)!important;}
 .has-err .errmsg{display:block;}
 
-/* LEGAL BLOCK */
 .legal-box{
   background:var(--warm);
   border:1px solid var(--border);
@@ -531,8 +571,7 @@ body::before{
 }
 .legal-box strong{color:var(--text);display:block;margin-bottom:4px;font-size:.8rem;}
 
-/* THANKS */
-.thanks-wrap{text-align:center;padding:36px 0;}
+.thanks-wrap{text-align:center;padding:36px 0 20px;}
 .thanks-wrap .big-ico{font-size:64px;display:block;margin-bottom:18px;animation:float 3s ease-in-out infinite;}
 @keyframes float{0%,100%{transform:translateY(0);}50%{transform:translateY(-8px);}}
 .thanks-wrap h2{
@@ -546,7 +585,7 @@ body::before{
   border:1px solid var(--border);
   border-radius:16px;
   padding:18px 20px;
-  margin:20px 0;
+  margin:20px 0 16px;
   text-align:left;
 }
 .info-row{display:flex;gap:10px;align-items:flex-start;font-size:.88rem;margin-bottom:10px;}
@@ -555,7 +594,6 @@ body::before{
 .info-row strong{display:block;color:var(--ink);font-size:.9rem;}
 .info-row span{color:var(--muted);}
 
-/* MARKUP label */
 .adlabel{
   display:inline-block;
   background:var(--gold-pale);
@@ -580,6 +618,7 @@ footer{
 @media(max-width:460px){
   .opts{grid-template-columns:1fr;}
   .days-row{grid-template-columns:repeat(4,1fr);}
+  .social-row{grid-template-columns:1fr;}
 }
 </style>
 </head>
@@ -593,7 +632,7 @@ footer{
     <div class="logo-sub">Нижнекамск · с 1999 года</div>
   </div>
   <div class="trust-badge">
-    <strong>25 лет</strong><br>авторская методика
+    <strong>★5.0</strong><br>41 отзыв · 2ГИС
   </div>
 </div>
 
@@ -608,7 +647,7 @@ footer{
   <div class="intro-wrap">
     <div class="eyebrow">Бесплатный тест · 2 минуты</div>
     <h1>Почему у вас<br>не получается петь —<br>и как это исправить<br><em>за 1 занятие</em></h1>
-    <p>Пройдите 5 вопросов. Узнайте свой вокальный тип и получите бесплатный пробный урок в студии.</p>
+    <p>Пройдите 6 вопросов. Узнайте свой вокальный тип и получите бесплатный пробный урок в студии.</p>
     <div class="pills">
       <div class="pill"><div class="pill-dot"></div>Взрослым с нуля</div>
       <div class="pill"><div class="pill-dot"></div>Без муз. образования</div>
@@ -618,7 +657,7 @@ footer{
 
   <div class="urgency">
     <div class="urgency-dot"></div>
-    На этой неделе осталось 3 свободных места для пробного занятия
+    На этой неделе есть свободные окна для пробного занятия
   </div>
 
   <div class="name-card">
@@ -630,7 +669,7 @@ footer{
 
   <div class="legal-box" style="margin-top:16px;">
     <strong>ℹ️ Реклама</strong>
-    ИП [Ваше ФИО]. Нижнекамск, Рамус Молл, 5 этаж, блок В, каб. В-2.<br>
+    Самозанятый Гайнемухаметов Ирек. Нижнекамск, Рамус Молл, 5 этаж, блок В, каб. В-2.<br>
     Квиз носит информационно-развлекательный характер. Профиль голоса — ориентировочный, определяется педагогом на занятии.
   </div>
 </div>
@@ -643,7 +682,7 @@ footer{
   </div>
   <div class="opts">
     <div class="opt" data-q="1" data-v="karaoke" onclick="pick(this,1)">
-      <span class="opt-ico">🎤</span><span class="opt-lbl">Петь в карaoке без стеснения</span>
+      <span class="opt-ico">🎤</span><span class="opt-lbl">Петь в караоке без стеснения</span>
     </div>
     <div class="opt" data-q="1" data-v="song" onclick="pick(this,1)">
       <span class="opt-ico">🎵</span><span class="opt-lbl">Красиво спеть любимую песню</span>
@@ -739,6 +778,25 @@ footer{
   </div>
 </div>
 
+<!-- ══ Q6: КВАЛИФИКАЦИЯ ══ -->
+<div class="screen" id="s6">
+  <div class="q-head">
+    <h2>Когда хотели бы начать занятия?</h2>
+    <div class="hint">Поможет педагогу подобрать удобное время</div>
+  </div>
+  <div class="opts solo">
+    <div class="opt" data-q="6" data-v="now" onclick="pick(this,6)">
+      <span class="opt-ico">🚀</span><span class="opt-lbl">Хочу начать как можно скорее</span>
+    </div>
+    <div class="opt" data-q="6" data-v="month" onclick="pick(this,6)">
+      <span class="opt-ico">📅</span><span class="opt-lbl">Думаю начать в течение месяца</span>
+    </div>
+    <div class="opt" data-q="6" data-v="looking" onclick="pick(this,6)">
+      <span class="opt-ico">🤔</span><span class="opt-lbl">Пока присматриваюсь, не определился/ась</span>
+    </div>
+  </div>
+</div>
+
 <!-- ══ RESULT ══ -->
 <div class="screen" id="sResult">
 
@@ -752,10 +810,16 @@ footer{
     <div class="p-tags" id="pTags"></div>
   </div>
 
+  <!-- Диагноз -->
+  <div class="diagnosis-card">
+    <div class="d-label">Ваша главная задача</div>
+    <div class="d-text" id="diagText"></div>
+  </div>
+
   <div class="slots-box">
     <span class="slots-icon">📅</span>
     <div class="slots-text">
-      <strong>На этой неделе осталось 3 свободных места</strong>
+      <strong>На этой неделе есть свободные окна</strong>
       Запишитесь сейчас — занятие бесплатное, без предоплаты
     </div>
   </div>
@@ -780,7 +844,7 @@ footer{
     <div class="ava">МА</div>
     <div class="ava-text">
       <p>«Думала, что у меня нет слуха вообще. После первого занятия спела любимую песню — слёзы были. Теперь занимаюсь уже 4 месяца.»</p>
-      <span>Марина А., 41 год · пришла с нуля</span>
+      <span>Марина А., 41 год · пришла с нуля · ★5.0 на 2ГИС</span>
     </div>
   </div>
 
@@ -792,7 +856,7 @@ footer{
 
     <div class="field" id="fg1">
       <label>Имя</label>
-      <input class="finput" id="fName" type="text" placeholder="Уже знаем — введите фамилию или оставьте">
+      <input class="finput" id="fName" type="text" placeholder="Ваше имя">
       <div class="errmsg">Введите ваше имя</div>
     </div>
 
@@ -804,7 +868,7 @@ footer{
 
     <div class="consent-row" id="cRow">
       <input type="checkbox" id="consent" required>
-      <label for="consent">Я даю согласие на обработку моих персональных данных (имя и телефон) в целях записи на занятие в студию «Твой голос». Данные не передаются третьим лицам. Согласие можно отозвать, написав на [ваш email].</label>
+      <label for="consent">Я даю согласие на обработку моих персональных данных (имя и телефон) в целях записи на занятие в студию «Твой голос». Данные не передаются третьим лицам. Согласие можно отозвать, написав на irek_lazzat@mail.ru.</label>
     </div>
     <div class="errmsg" id="consentErr" style="margin-bottom:10px;">Необходимо ваше согласие</div>
 
@@ -882,172 +946,242 @@ footer{
       </div>
     </div>
 
-    <p style="font-size:.82rem;color:var(--muted);">Поделитесь квизом с подругой, которая тоже давно хотела попробовать 🎵</p>
+    <p style="font-size:.88rem;color:var(--text);font-weight:600;margin-bottom:12px;">Подписывайтесь — там упражнения, советы и истории учеников:</p>
+
+    <div class="social-row">
+      <a class="btn-outline" href="https://vk.com/vocaltvoigolos" target="_blank" rel="noopener">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M21.547 7h-3.29a.743.743 0 0 0-.655.392s-1.312 2.416-1.77 3.654c-1.626 4.233-2.098.52-2.098-1.776V7.47A1.47 1.47 0 0 0 12.265 6H9.326c-.978 0-1.547.674-1.547 1.302 0 0-.024.3.558.37.727.088 1.038.485 1.038 1.058v2.284C9.375 12.551 8.471 13 7.75 13s-2.188-.374-3.063-3.984C4.47 7.788 4.198 7 3.154 7H.803A.803.803 0 0 0 0 7.803c0 .463 3.26 9.199 9.398 9.199H11.5a.75.75 0 0 0 .75-.75v-1.086c0-.86.942-.93.942-.93s2.5.283 4.042 1.616c.596.519 1.256.951 2.163.951h2.1A.503.503 0 0 0 22 16.3c0-.5-1.453-9.3-3.453-9.3z"/></svg>
+        ВКонтакте
+      </a>
+      <a class="btn-outline" href="https://t.me/vocaltvoigolos" target="_blank" rel="noopener">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.562 8.248-1.97 9.289c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12l-6.871 4.326-2.962-.924c-.643-.204-.657-.643.136-.953l11.57-4.461c.537-.194 1.006.131.833.932z"/></svg>
+        Telegram
+      </a>
+    </div>
   </div>
 </div>
 
-<footer>Студия вокала «Твой голос» · Нижнекамск · ИП [Ваше ФИО] · Реклама</footer>
+<footer>Студия вокала «Твой голос» · Нижнекамск · Самозанятый Гайнемухаметов Ирек · Реклама</footer>
 
 </div>
 
 <script>
 const PROFILES = {
-  drama:{name:'Драматический голос',ico:'🔥',cls:'pc-drama',desc:'Мощь, страсть и глубина — ваша природа. Такие голоса созданы для сильных эмоций и настоящего звучания.',tags:['Сила тембра','Широкий диапазон','Эмоциональность'],gift:'На пробном педагог покажет, как раскрыть природную силу голоса — без напряжения и срывов.'},
-  lyric:{name:'Лирический голос',ico:'🌊',cls:'pc-lyric',desc:'Нежность, чувство и искренность — ваши козыри. Такие голоса трогают сердца, даже без громкости.',tags:['Мягкость','Задушевность','Чистота'],gift:'На пробном педагог найдёт ваш диапазон и подберёт первую песню, которая раскроет красоту вашего голоса.'},
-  jazz:{name:'Джазовый голос',ico:'🎷',cls:'pc-jazz',desc:'Свобода, характер и стиль — это про вас. Джазовые голоса живут в моменте и всегда звучат по-особенному.',tags:['Характер','Гибкость','Стиль'],gift:'На пробном вы почувствуете, что голос — это инструмент с характером. И этот характер уже есть у вас.'},
-  pop:{name:'Эстрадный голос',ico:'⭐',cls:'pc-pop',desc:'Яркость, харизма и сцена — ваша территория. Эстрадные голоса созданы быть услышанными.',tags:['Яркость','Харизма','Сценичность'],gift:'На пробном педагог покажет, как петь любимые песни без зажимов — свободно и с удовольствием.'}
+  drama:{name:'Драматический голос',ico:'🔥',cls:'pc-drama',desc:'Мощь, страсть и глубина — ваша природа. Такие голоса созданы для сильных эмоций и настоящего звучания.',tags:['Сила тембра','Широкий диапазон','Эмоциональность']},
+  lyric:{name:'Лирический голос',ico:'🌊',cls:'pc-lyric',desc:'Нежность, чувство и искренность — ваши козыри. Такие голоса трогают сердца, даже без громкости.',tags:['Мягкость','Задушевность','Чистота']},
+  jazz:{name:'Джазовый голос',ico:'🎷',cls:'pc-jazz',desc:'Свобода, характер и стиль — это про вас. Джазовые голоса живут в моменте и всегда звучат по-особенному.',tags:['Характер','Гибкость','Стиль']},
+  pop:{name:'Эстрадный голос',ico:'⭐',cls:'pc-pop',desc:'Яркость, харизма и сцена — ваша территория. Эстрадные голоса созданы быть услышанными.',tags:['Яркость','Харизма','Сценичность']}
 };
 
-let answers={}, userName='', selectedDay='';
-const BOT_TOKEN='YOUR_BOT_TOKEN';
-const CHAT_ID='YOUR_CHAT_ID';
+const DIAGNOSES = {
+  shy:'Главная задача — убрать психологический зажим. На первом занятии вы поймёте: ваш голос звучит красиво, его просто нужно освободить.',
+  pitch:'Попадание в ноты — это навык, не дар от природы. За 8–12 занятий слух развивается у всех без исключения.',
+  tired:'Голос садится из-за зажима в гортани. Педагог покажет технику опоры диафрагмой — уже на первом занятии почувствуете разницу.',
+  never:'Начинать с нуля — это плюс: нечего переучивать. Педагог настроится точно под ваш голос и ваш темп.'
+};
 
-function getProfile(){
-  const s=answers[4];
-  if(s==='jazz') return 'jazz';
-  if(s==='romance') return 'lyric';
-  if(s==='rock') return 'drama';
+let answers = {}, userName = '', selectedDay = '';
+
+// Telegram
+const BOT_TOKEN = '8267832030:AAFyxd3FWZvz1g7-FYOfKWCNvpO6QfQHn9k';
+const CHAT_ID = '7022978478';
+
+// Google Sheets (необязательно): создайте Apps Script веб-приложение и вставьте URL сюда
+const SHEETS_URL = '';
+
+function getProfile() {
+  const genre = answers[4];
+  const problem = answers[2];
+  if (genre === 'jazz') return 'jazz';
+  if (genre === 'romance') return 'lyric';
+  if (genre === 'rock') return 'drama';
+  if (problem === 'shy' || problem === 'pitch') return 'lyric';
   return 'pop';
 }
 
-function startQuiz(){
-  const n=document.getElementById('nameInp').value.trim();
-  if(n.length<2){document.getElementById('nameInp').style.borderColor='var(--rose)';document.getElementById('nameInp').focus();return;}
-  userName=n.split(' ')[0];
-  document.getElementById('fName').value=n;
-  document.getElementById('q1h').textContent=userName+', о чём вы мечтаете, когда думаете о пении?';
+function getLeadScore() {
+  let score = 0;
+  if (answers[1] === 'stage') score += 3;
+  else if (answers[1] === 'song' || answers[1] === 'karaoke') score += 2;
+  else if (answers[1] === 'soul') score += 1;
+
+  if (answers[3] === 'little' || answers[3] === 'self') score += 2;
+  else if (answers[3] === 'zero') score += 1;
+
+  if (answers[6] === 'now') score += 3;
+  else if (answers[6] === 'month') score += 2;
+
+  if (score >= 6) return {emoji:'🔥', label:'Горячий'};
+  if (score >= 3) return {emoji:'🟡', label:'Тёплый'};
+  return {emoji:'❄️', label:'Холодный'};
+}
+
+function startQuiz() {
+  const n = document.getElementById('nameInp').value.trim();
+  if (n.length < 2) {
+    document.getElementById('nameInp').style.borderColor = 'var(--rose)';
+    document.getElementById('nameInp').focus();
+    return;
+  }
+  userName = n.split(' ')[0];
+  document.getElementById('fName').value = n;
+  document.getElementById('q1h').textContent = userName + ', о чём вы мечтаете, когда думаете о пении?';
   show('s1');
-  document.getElementById('ptrack').style.display='block';
-  document.getElementById('plabel').style.display='block';
+  document.getElementById('ptrack').style.display = 'block';
+  document.getElementById('plabel').style.display = 'block';
   updateP(1);
 }
 
-function pick(el,q){
-  document.querySelectorAll(`.opt[data-q="${q}"]`).forEach(o=>o.classList.remove('sel'));
+function pick(el, q) {
+  document.querySelectorAll(`.opt[data-q="${q}"]`).forEach(o => o.classList.remove('sel'));
   el.classList.add('sel');
-  answers[q]=el.dataset.v;
-  setTimeout(()=>{
-    if(q<5){show('s'+(q+1));updateP(q+1);}
-    else{showResult();}
-  },300);
+  answers[q] = el.dataset.v;
+  setTimeout(() => {
+    if (q < 6) { show('s' + (q + 1)); updateP(q + 1); }
+    else { showResult(); }
+  }, 300);
 }
 
-function updateP(q){
-  const p=Math.round(((q-1)/5)*100);
-  document.getElementById('pfill').style.width=p+'%';
-  document.getElementById('plabel').textContent='Вопрос '+q+' из 5';
+function updateP(q) {
+  const p = Math.round(((q - 1) / 6) * 100);
+  document.getElementById('pfill').style.width = p + '%';
+  document.getElementById('plabel').textContent = 'Вопрос ' + q + ' из 6';
 }
 
-function showResult(){
-  const key=getProfile();
-  const p=PROFILES[key];
-  document.getElementById('hailText').textContent=userName+', ваш вокальный профиль определён!';
-  const card=document.getElementById('pCard');
-  card.className='profile-card '+p.cls;
-  document.getElementById('pIco').textContent=p.ico;
-  document.getElementById('pName').textContent=p.name;
-  document.getElementById('pDesc').textContent=p.desc;
-  document.getElementById('pTags').innerHTML=p.tags.map(t=>`<span class="p-tag">${t}</span>`).join('');
-  document.getElementById('pfill').style.width='100%';
-  document.getElementById('plabel').textContent='Результат готов!';
+function showResult() {
+  const key = getProfile();
+  const p = PROFILES[key];
+  const diag = DIAGNOSES[answers[2]] || DIAGNOSES.never;
+
+  document.getElementById('hailText').textContent = userName + ', ваш вокальный профиль определён!';
+  const card = document.getElementById('pCard');
+  card.className = 'profile-card ' + p.cls;
+  document.getElementById('pIco').textContent = p.ico;
+  document.getElementById('pName').textContent = p.name;
+  document.getElementById('pDesc').textContent = p.desc;
+  document.getElementById('pTags').innerHTML = p.tags.map(t => `<span class="p-tag">${t}</span>`).join('');
+  document.getElementById('diagText').textContent = diag;
+  document.getElementById('pfill').style.width = '100%';
+  document.getElementById('plabel').textContent = 'Результат готов!';
   show('sResult');
-  setTimeout(()=>window.scrollTo({top:0,behavior:'smooth'}),50);
+  setTimeout(() => window.scrollTo({top: 0, behavior: 'smooth'}), 50);
 }
 
-function pickDay(el){
-  document.querySelectorAll('.dday').forEach(d=>d.classList.remove('on'));
+function pickDay(el) {
+  document.querySelectorAll('.dday').forEach(d => d.classList.remove('on'));
   el.classList.add('on');
-  selectedDay=el.dataset.day;
-  document.getElementById('dayErr').style.display='none';
+  selectedDay = el.dataset.day;
+  document.getElementById('dayErr').style.display = 'none';
 }
 
-function toStep2(){
-  let ok=true;
-  const name=document.getElementById('fName').value.trim();
-  const phone=document.getElementById('fPhone').value.trim();
-  const cb=document.getElementById('consent');
-  const ce=document.getElementById('consentErr');
+function toStep2() {
+  let ok = true;
+  const name = document.getElementById('fName').value.trim();
+  const phone = document.getElementById('fPhone').value.trim();
+  const cb = document.getElementById('consent');
+  const ce = document.getElementById('consentErr');
 
-  const fg1=document.getElementById('fg1');
-  if(name.length<2){fg1.classList.add('has-err');ok=false;}else{fg1.classList.remove('has-err');}
+  const fg1 = document.getElementById('fg1');
+  if (name.length < 2) { fg1.classList.add('has-err'); ok = false; } else { fg1.classList.remove('has-err'); }
 
-  const fg2=document.getElementById('fg2');
-  const ph=phone.replace(/\D/g,'');
-  if(ph.length<10){fg2.classList.add('has-err');ok=false;}else{fg2.classList.remove('has-err');}
+  const fg2 = document.getElementById('fg2');
+  const ph = phone.replace(/\D/g, '');
+  if (ph.length < 10) { fg2.classList.add('has-err'); ok = false; } else { fg2.classList.remove('has-err'); }
 
-  if(!cb.checked){ce.style.display='block';ok=false;}else{ce.style.display='none';}
+  if (!cb.checked) { ce.style.display = 'block'; ok = false; } else { ce.style.display = 'none'; }
 
-  if(!ok)return;
-  document.getElementById('formS1').style.display='none';
-  document.getElementById('formS2').style.display='block';
-  document.getElementById('formS2').classList.add('form-s2');
-  document.getElementById('formS2').style.display='block';
-  setTimeout(()=>document.getElementById('formS2').scrollIntoView({behavior:'smooth',block:'start'}),50);
+  if (!ok) return;
+  document.getElementById('formS1').style.display = 'none';
+  document.getElementById('formS2').style.display = 'block';
+  setTimeout(() => document.getElementById('formS2').scrollIntoView({behavior: 'smooth', block: 'start'}), 50);
 }
 
-function submitForm(){
-  let ok=true;
-  const from=document.getElementById('selFrom').value;
-  const to=document.getElementById('selTo').value;
-  const de=document.getElementById('dayErr');
-  const ftf=document.getElementById('ftfrom');
-  const ftt=document.getElementById('ftto');
+function submitForm() {
+  let ok = true;
+  const from = document.getElementById('selFrom').value;
+  const to = document.getElementById('selTo').value;
+  const de = document.getElementById('dayErr');
+  const ftf = document.getElementById('ftfrom');
+  const ftt = document.getElementById('ftto');
 
-  if(!selectedDay){de.style.display='block';ok=false;}else{de.style.display='none';}
-  if(!from){ftf.classList.add('has-err');ok=false;}else{ftf.classList.remove('has-err');}
-  if(!to){ftt.classList.add('has-err');ok=false;}else{ftt.classList.remove('has-err');}
-  if(!ok)return;
+  if (!selectedDay) { de.style.display = 'block'; ok = false; } else { de.style.display = 'none'; }
+  if (!from) { ftf.classList.add('has-err'); ok = false; } else { ftf.classList.remove('has-err'); }
+  if (!to) { ftt.classList.add('has-err'); ok = false; } else { ftt.classList.remove('has-err'); }
+  if (!ok) return;
 
-  const name=document.getElementById('fName').value.trim();
-  const phone=document.getElementById('fPhone').value.trim();
-  const key=getProfile();
-  const prof=PROFILES[key];
+  const name = document.getElementById('fName').value.trim();
+  const phone = document.getElementById('fPhone').value.trim();
+  const key = getProfile();
+  const prof = PROFILES[key];
+  const lead = getLeadScore();
 
-  const dreamMap={karaoke:'Петь в карaoке',song:'Красиво спеть песню',stage:'Выступить на сцене',soul:'Петь для себя'};
-  const painMap={shy:'Стесняется',pitch:'Не попадает в ноты',tired:'Голос устаёт',never:'Никогда не пробовал/а'};
-  const expMap={zero:'С нуля',little:'Немного (хор/детство)',self:'Сам по YouTube'};
+  const dreamMap = {karaoke:'Петь в караоке', song:'Красиво спеть песню', stage:'Выступить на сцене', soul:'Петь для себя'};
+  const painMap = {shy:'Стесняется', pitch:'Не попадает в ноты', tired:'Голос устаёт', never:'Никогда не пробовал/а'};
+  const expMap = {zero:'С нуля', little:'Немного (хор/детство)', self:'Сам по YouTube'};
+  const readyMap = {now:'Хочет начать скорее', month:'В течение месяца', looking:'Присматривается'};
 
-  const msg=`🎤 НОВАЯ ЗАЯВКА — «Твой голос»\n\n👤 Имя: ${name}\n📞 Телефон: ${phone}\n📅 День: ${selectedDay}\n🕐 Время: ${from} – ${to}\n\n🎭 Профиль: ${prof.name}\n💭 Мечта: ${dreamMap[answers[1]]||'—'}\n😔 Проблема: ${painMap[answers[2]]||'—'}\n🎓 Опыт: ${expMap[answers[3]]||'—'}\n🎵 Стиль: ${answers[4]||'—'}\n🎯 Важно на первом уроке: ${answers[5]||'—'}`;
+  const msg =
+`${lead.emoji} ${lead.label.toUpperCase()} — НОВАЯ ЗАЯВКА «Твой голос»
 
-  if(BOT_TOKEN!=='YOUR_BOT_TOKEN'){
-    fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`,{
-      method:'POST',headers:{'Content-Type':'application/json'},
-      body:JSON.stringify({chat_id:CHAT_ID,text:msg})
-    }).catch(()=>{});
+👤 Имя: ${name}
+📞 Телефон: ${phone}
+📅 День: ${selectedDay}
+🕐 Время: ${from} – ${to}
+
+🎭 Профиль: ${prof.name}
+💭 Мечта: ${dreamMap[answers[1]] || '—'}
+😔 Проблема: ${painMap[answers[2]] || '—'}
+🎓 Опыт: ${expMap[answers[3]] || '—'}
+🎵 Стиль: ${answers[4] || '—'}
+🎯 Важно на 1-м уроке: ${answers[5] || '—'}
+⏰ Готовность: ${readyMap[answers[6]] || '—'}`;
+
+  // Отправка в Telegram
+  fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
+    method: 'POST',
+    headers: {'Content-Type': 'application/json'},
+    body: JSON.stringify({chat_id: CHAT_ID, text: msg})
+  }).catch(() => {});
+
+  // Отправка в Google Sheets (если задан SHEETS_URL)
+  if (SHEETS_URL) {
+    fetch(SHEETS_URL, {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({name, phone, day: selectedDay, from, to, profile: prof.name, score: lead.label, dream: dreamMap[answers[1]], pain: painMap[answers[2]], exp: expMap[answers[3]], ready: readyMap[answers[6]]})
+    }).catch(() => {});
   }
 
-  document.getElementById('tyName').textContent=userName||name.split(' ')[0];
-  document.getElementById('ptrack').style.display='none';
-  document.getElementById('plabel').style.display='none';
+  document.getElementById('tyName').textContent = userName || name.split(' ')[0];
+  document.getElementById('ptrack').style.display = 'none';
+  document.getElementById('plabel').style.display = 'none';
   show('sThanks');
-  window.scrollTo({top:0,behavior:'smooth'});
+  window.scrollTo({top: 0, behavior: 'smooth'});
 }
 
-function show(id){
-  document.querySelectorAll('.screen').forEach(s=>{s.classList.remove('active');s.style.display='none';});
-  const el=document.getElementById(id);
-  el.style.display='block';
-  setTimeout(()=>el.classList.add('active'),10);
+function show(id) {
+  document.querySelectorAll('.screen').forEach(s => { s.classList.remove('active'); s.style.display = 'none'; });
+  const el = document.getElementById(id);
+  el.style.display = 'block';
+  setTimeout(() => el.classList.add('active'), 10);
 }
 
-// phone format
-document.addEventListener('DOMContentLoaded',()=>{
-  const ph=document.getElementById('fPhone');
-  ph.addEventListener('input',function(){
-    let v=this.value.replace(/\D/g,'');
-    if(v.startsWith('8'))v='7'+v.slice(1);
-    if(v.startsWith('7')){
-      let r='+7';
-      if(v.length>1)r+=' ('+v.slice(1,4);
-      if(v.length>=4)r+=') '+v.slice(4,7);
-      if(v.length>=7)r+='-'+v.slice(7,9);
-      if(v.length>=9)r+='-'+v.slice(9,11);
-      this.value=r;
+document.addEventListener('DOMContentLoaded', () => {
+  const ph = document.getElementById('fPhone');
+  ph.addEventListener('input', function() {
+    let v = this.value.replace(/\D/g, '');
+    if (v.startsWith('8')) v = '7' + v.slice(1);
+    if (v.startsWith('7')) {
+      let r = '+7';
+      if (v.length > 1) r += ' (' + v.slice(1, 4);
+      if (v.length >= 4) r += ') ' + v.slice(4, 7);
+      if (v.length >= 7) r += '-' + v.slice(7, 9);
+      if (v.length >= 9) r += '-' + v.slice(9, 11);
+      this.value = r;
     }
   });
-  // pre-fill name from intro
-  document.getElementById('nameInp').addEventListener('keydown',function(e){
-    if(e.key==='Enter')startQuiz();
+  document.getElementById('nameInp').addEventListener('keydown', function(e) {
+    if (e.key === 'Enter') startQuiz();
   });
 });
 </script>
