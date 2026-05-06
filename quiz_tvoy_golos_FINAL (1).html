@@ -1,0 +1,1055 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Твой голос — Узнай, почему не получается петь</title>
+<meta property="og:title" content="Почему у вас не получается петь — и как это исправить за 1 занятие">
+<meta property="og:description" content="Пройдите тест — получите бесплатный пробный урок в студии вокала «Твой голос», Нижнекамск">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Golos+Text:wght@400;500;600;700&display=swap');
+
+*{margin:0;padding:0;box-sizing:border-box;}
+
+:root{
+  --ink:#1A1018;
+  --paper:#FAF7F2;
+  --warm:#F5EFE4;
+  --gold:#B8882A;
+  --gold2:#D4A843;
+  --gold-pale:#FBF3E0;
+  --rose:#C0394A;
+  --border:#E2D9CC;
+  --muted:#8A7E72;
+  --text:#2A2018;
+}
+
+html{scroll-behavior:smooth;}
+
+body{
+  font-family:'Golos Text',sans-serif;
+  background:var(--paper);
+  color:var(--text);
+  min-height:100vh;
+  position:relative;
+  overflow-x:hidden;
+}
+
+/* grain texture */
+body::before{
+  content:'';
+  position:fixed;
+  inset:0;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+  pointer-events:none;
+  z-index:0;
+  opacity:.4;
+}
+
+.wrap{
+  max-width:620px;
+  margin:0 auto;
+  padding:0 18px 60px;
+  position:relative;
+  z-index:1;
+}
+
+/* TOP BAR */
+.topbar{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:18px 0 0;
+  border-bottom:1px solid var(--border);
+  padding-bottom:14px;
+  margin-bottom:0;
+}
+.logo-text{
+  font-family:'Playfair Display',serif;
+  font-size:1rem;
+  font-weight:700;
+  color:var(--ink);
+  letter-spacing:.3px;
+}
+.logo-sub{
+  font-size:10px;
+  color:var(--muted);
+  letter-spacing:1.5px;
+  text-transform:uppercase;
+  margin-top:1px;
+}
+.trust-badge{
+  font-size:10px;
+  color:var(--muted);
+  text-align:right;
+  line-height:1.4;
+}
+.trust-badge strong{color:var(--gold);font-size:11px;}
+
+/* PROGRESS */
+.progress-track{
+  height:3px;
+  background:var(--border);
+  margin:0 -18px;
+  position:relative;
+}
+.progress-fill{
+  height:100%;
+  background:linear-gradient(90deg,var(--gold),var(--gold2));
+  transition:width .5s cubic-bezier(.4,0,.2,1);
+}
+.step-label{
+  font-size:10px;
+  letter-spacing:2px;
+  text-transform:uppercase;
+  color:var(--muted);
+  text-align:center;
+  padding:10px 0 0;
+}
+
+/* SCREEN */
+.screen{display:none;}
+.screen.active{display:block;animation:rise .4s ease both;}
+@keyframes rise{from{opacity:0;transform:translateY(14px);}to{opacity:1;transform:translateY(0);}}
+
+/* URGENCY BANNER */
+.urgency{
+  background:var(--gold-pale);
+  border:1px solid rgba(184,136,42,.25);
+  border-radius:10px;
+  padding:9px 14px;
+  display:flex;
+  align-items:center;
+  gap:10px;
+  font-size:12px;
+  color:var(--gold);
+  font-weight:600;
+  margin-bottom:20px;
+}
+.urgency-dot{
+  width:7px;height:7px;
+  background:var(--rose);
+  border-radius:50%;
+  flex-shrink:0;
+  animation:pulse 1.8s ease-in-out infinite;
+}
+@keyframes pulse{0%,100%{opacity:1;}50%{opacity:.3;}}
+
+/* INTRO */
+.intro-wrap{
+  padding:28px 0 8px;
+  text-align:center;
+}
+.eyebrow{
+  display:inline-block;
+  font-size:10px;
+  letter-spacing:2.5px;
+  text-transform:uppercase;
+  color:var(--muted);
+  border:1px solid var(--border);
+  border-radius:20px;
+  padding:5px 14px;
+  margin-bottom:18px;
+}
+.intro-wrap h1{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(1.6rem,5vw,2.1rem);
+  font-weight:900;
+  line-height:1.2;
+  color:var(--ink);
+  margin-bottom:14px;
+}
+.intro-wrap h1 em{
+  font-style:italic;
+  color:var(--gold);
+}
+.intro-wrap p{
+  font-size:.95rem;
+  color:var(--muted);
+  line-height:1.7;
+  max-width:440px;
+  margin:0 auto 24px;
+}
+.pills{
+  display:flex;
+  justify-content:center;
+  gap:8px;
+  flex-wrap:wrap;
+  margin-bottom:28px;
+}
+.pill{
+  display:inline-flex;
+  align-items:center;
+  gap:5px;
+  background:white;
+  border:1px solid var(--border);
+  border-radius:20px;
+  padding:5px 12px;
+  font-size:11px;
+  font-weight:600;
+  color:var(--text);
+}
+.pill-dot{width:5px;height:5px;border-radius:50%;background:var(--gold);}
+
+/* NAME STEP */
+.name-card{
+  background:white;
+  border:1px solid var(--border);
+  border-radius:20px;
+  padding:32px 28px;
+  text-align:center;
+  margin-top:8px;
+}
+.name-card h2{
+  font-family:'Playfair Display',serif;
+  font-size:1.4rem;
+  font-weight:700;
+  margin-bottom:8px;
+}
+.name-card p{font-size:.88rem;color:var(--muted);margin-bottom:20px;line-height:1.6;}
+.name-input{
+  width:100%;
+  background:var(--warm);
+  border:1.5px solid var(--border);
+  border-radius:12px;
+  padding:14px 18px;
+  font-family:'Golos Text',sans-serif;
+  font-size:1rem;
+  color:var(--ink);
+  outline:none;
+  transition:border-color .2s;
+  text-align:center;
+  margin-bottom:16px;
+}
+.name-input:focus{border-color:var(--gold);}
+.name-input::placeholder{color:var(--muted);}
+
+/* BUTTONS */
+.btn{
+  display:block;
+  width:100%;
+  padding:17px 24px;
+  background:var(--ink);
+  color:var(--paper);
+  font-family:'Golos Text',sans-serif;
+  font-size:.97rem;
+  font-weight:700;
+  letter-spacing:.3px;
+  border:none;
+  border-radius:14px;
+  cursor:pointer;
+  transition:all .2s;
+}
+.btn:hover{background:#352A28;transform:translateY(-1px);}
+.btn:active{transform:translateY(0);}
+.btn-gold{
+  background:linear-gradient(135deg,#A67822,var(--gold2));
+  color:#1A1000;
+  box-shadow:0 6px 24px rgba(184,136,42,.25);
+}
+.btn-gold:hover{box-shadow:0 10px 32px rgba(184,136,42,.4);background:linear-gradient(135deg,#B88830,#E0B855);}
+
+/* QUESTION */
+.q-head{
+  padding:28px 0 20px;
+}
+.q-head h2{
+  font-family:'Playfair Display',serif;
+  font-size:1.35rem;
+  font-weight:700;
+  line-height:1.35;
+  color:var(--ink);
+}
+.q-head .hint{font-size:.82rem;color:var(--muted);margin-top:6px;}
+
+.opts{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+.opts.solo{grid-template-columns:1fr;}
+
+.opt{
+  background:white;
+  border:1.5px solid var(--border);
+  border-radius:14px;
+  padding:16px 14px;
+  cursor:pointer;
+  transition:all .2s;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:8px;
+  text-align:center;
+  user-select:none;
+  -webkit-tap-highlight-color:transparent;
+}
+.opt:hover{border-color:var(--gold2);background:var(--gold-pale);transform:translateY(-1px);}
+.opt.sel{border-color:var(--gold);background:var(--gold-pale);box-shadow:0 0 0 1px var(--gold);}
+.opt-ico{font-size:26px;line-height:1;}
+.opt-lbl{font-size:.83rem;font-weight:600;color:var(--text);line-height:1.4;}
+
+/* RESULT */
+.confetti-row{text-align:center;font-size:32px;letter-spacing:4px;padding:24px 0 6px;animation:pop .5s ease;}
+@keyframes pop{from{transform:scale(.5);opacity:0;}70%{transform:scale(1.08);}to{transform:scale(1);opacity:1;}}
+.hail{
+  font-family:'Playfair Display',serif;
+  font-size:1.1rem;
+  font-weight:700;
+  text-align:center;
+  color:var(--gold);
+  margin-bottom:18px;
+}
+
+.profile-card{
+  border-radius:20px;
+  padding:28px 24px;
+  margin-bottom:16px;
+  position:relative;
+  overflow:hidden;
+}
+.profile-card::before{
+  content:'';
+  position:absolute;
+  top:-60px;right:-60px;
+  width:180px;height:180px;
+  border-radius:50%;
+  background:rgba(255,255,255,.06);
+}
+.p-ico{font-size:48px;display:block;margin-bottom:12px;filter:drop-shadow(0 2px 8px rgba(0,0,0,.2));}
+.p-name{
+  font-family:'Playfair Display',serif;
+  font-size:1.55rem;
+  font-weight:700;
+  margin-bottom:6px;
+}
+.p-desc{font-size:.88rem;opacity:.82;line-height:1.65;margin-bottom:14px;}
+.p-tags{display:flex;flex-wrap:wrap;gap:6px;}
+.p-tag{
+  background:rgba(255,255,255,.15);
+  border-radius:20px;
+  padding:3px 11px;
+  font-size:10px;
+  font-weight:700;
+  letter-spacing:1px;
+  text-transform:uppercase;
+}
+
+/* profile colors */
+.pc-drama{background:#1E0810;color:#F5B0BE;}
+.pc-lyric{background:#071628;color:#90C4F0;}
+.pc-jazz{background:#170F02;color:#E8C06A;}
+.pc-pop{background:#0E0C22;color:#B0BCFF;}
+
+/* STEPS "что будет" */
+.lesson-steps{
+  background:white;
+  border:1px solid var(--border);
+  border-radius:16px;
+  padding:20px 20px;
+  margin-bottom:16px;
+}
+.lesson-steps h4{
+  font-family:'Playfair Display',serif;
+  font-size:1rem;
+  font-weight:700;
+  margin-bottom:14px;
+  color:var(--ink);
+}
+.lstep{display:flex;gap:12px;align-items:flex-start;margin-bottom:12px;}
+.lstep:last-child{margin-bottom:0;}
+.lstep-num{
+  min-width:26px;height:26px;
+  background:var(--ink);
+  color:var(--paper);
+  border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  font-size:11px;font-weight:700;
+  flex-shrink:0;
+}
+.lstep-text{font-size:.87rem;color:var(--text);line-height:1.5;padding-top:3px;}
+.lstep-text strong{color:var(--ink);display:block;font-size:.9rem;margin-bottom:1px;}
+
+/* URGENCY on result */
+.slots-box{
+  background:var(--gold-pale);
+  border:1px solid rgba(184,136,42,.3);
+  border-radius:12px;
+  padding:12px 16px;
+  display:flex;
+  align-items:center;
+  gap:12px;
+  margin-bottom:16px;
+  font-size:.87rem;
+}
+.slots-icon{font-size:20px;flex-shrink:0;}
+.slots-text{color:var(--text);line-height:1.4;}
+.slots-text strong{color:var(--rose);display:block;}
+
+/* TESTIMONIAL */
+.testimonial{
+  background:var(--warm);
+  border-left:3px solid var(--gold);
+  border-radius:0 12px 12px 0;
+  padding:14px 16px;
+  margin-bottom:16px;
+  display:flex;
+  gap:12px;
+  align-items:flex-start;
+}
+.ava{
+  width:38px;height:38px;
+  border-radius:50%;
+  background:var(--gold);
+  display:flex;align-items:center;justify-content:center;
+  font-size:13px;font-weight:700;
+  color:white;
+  flex-shrink:0;
+}
+.ava-text p{font-size:.85rem;color:var(--text);line-height:1.55;font-style:italic;}
+.ava-text span{font-size:.78rem;color:var(--muted);font-weight:600;display:block;margin-top:5px;}
+
+/* FORM CARD */
+.form-card{
+  background:white;
+  border:1px solid var(--border);
+  border-radius:20px;
+  padding:28px 24px;
+}
+.form-card h3{
+  font-family:'Playfair Display',serif;
+  font-size:1.3rem;
+  font-weight:700;
+  margin-bottom:6px;
+}
+.form-sub{font-size:.85rem;color:var(--muted);margin-bottom:22px;line-height:1.6;}
+
+.field{margin-bottom:14px;}
+.field label{
+  display:block;
+  font-size:10px;
+  font-weight:700;
+  letter-spacing:1.5px;
+  text-transform:uppercase;
+  color:var(--muted);
+  margin-bottom:7px;
+}
+.finput{
+  width:100%;
+  background:var(--warm);
+  border:1.5px solid var(--border);
+  border-radius:11px;
+  padding:13px 15px;
+  font-family:'Golos Text',sans-serif;
+  font-size:.95rem;
+  color:var(--ink);
+  outline:none;
+  transition:border-color .2s;
+  -webkit-appearance:none;
+}
+.finput:focus{border-color:var(--gold);}
+.finput::placeholder{color:var(--muted);}
+
+/* FORM STEP 2 */
+.form-s2{display:none;}
+.days-row{display:grid;grid-template-columns:repeat(7,1fr);gap:5px;margin-bottom:6px;}
+.dday{
+  background:var(--warm);
+  border:1.5px solid var(--border);
+  border-radius:8px;
+  padding:8px 4px;
+  font-size:11px;font-weight:700;
+  color:var(--muted);
+  cursor:pointer;
+  text-align:center;
+  transition:all .18s;
+  user-select:none;
+}
+.dday:hover{border-color:var(--gold2);color:var(--gold);}
+.dday.on{background:var(--gold-pale);border-color:var(--gold);color:var(--gold);}
+
+.time-row{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+.fsel{
+  width:100%;
+  background:var(--warm);
+  border:1.5px solid var(--border);
+  border-radius:11px;
+  padding:13px 15px;
+  font-family:'Golos Text',sans-serif;
+  font-size:.92rem;
+  color:var(--ink);
+  outline:none;
+  cursor:pointer;
+  transition:border-color .2s;
+  -webkit-appearance:none;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%238A7E72' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+  background-repeat:no-repeat;
+  background-position:right 12px center;
+  padding-right:36px;
+}
+.fsel:focus{border-color:var(--gold);}
+.fsel option{background:white;}
+
+/* CONSENT */
+.consent-row{
+  display:flex;
+  gap:10px;
+  align-items:flex-start;
+  margin:14px 0 16px;
+  font-size:.78rem;
+  color:var(--muted);
+  line-height:1.55;
+}
+.consent-row input[type=checkbox]{
+  margin-top:2px;
+  accent-color:var(--gold);
+  flex-shrink:0;
+  width:15px;height:15px;
+  cursor:pointer;
+}
+.consent-row a{color:var(--gold);text-decoration:none;}
+
+.btn-note{
+  text-align:center;
+  font-size:.77rem;
+  color:var(--muted);
+  margin-top:10px;
+  line-height:1.55;
+}
+
+/* ERROR */
+.errmsg{display:none;font-size:.75rem;color:var(--rose);font-weight:600;margin-top:4px;}
+.has-err .finput,.has-err .fsel{border-color:var(--rose)!important;}
+.has-err .errmsg{display:block;}
+
+/* LEGAL BLOCK */
+.legal-box{
+  background:var(--warm);
+  border:1px solid var(--border);
+  border-radius:12px;
+  padding:16px;
+  margin-top:20px;
+  font-size:.78rem;
+  color:var(--muted);
+  line-height:1.6;
+}
+.legal-box strong{color:var(--text);display:block;margin-bottom:4px;font-size:.8rem;}
+
+/* THANKS */
+.thanks-wrap{text-align:center;padding:36px 0;}
+.thanks-wrap .big-ico{font-size:64px;display:block;margin-bottom:18px;animation:float 3s ease-in-out infinite;}
+@keyframes float{0%,100%{transform:translateY(0);}50%{transform:translateY(-8px);}}
+.thanks-wrap h2{
+  font-family:'Playfair Display',serif;
+  font-size:1.8rem;font-weight:700;
+  margin-bottom:10px;
+}
+.thanks-wrap p{font-size:.92rem;color:var(--muted);line-height:1.7;margin-bottom:8px;}
+.info-card{
+  background:white;
+  border:1px solid var(--border);
+  border-radius:16px;
+  padding:18px 20px;
+  margin:20px 0;
+  text-align:left;
+}
+.info-row{display:flex;gap:10px;align-items:flex-start;font-size:.88rem;margin-bottom:10px;}
+.info-row:last-child{margin-bottom:0;}
+.info-ico{font-size:15px;flex-shrink:0;margin-top:1px;}
+.info-row strong{display:block;color:var(--ink);font-size:.9rem;}
+.info-row span{color:var(--muted);}
+
+/* MARKUP label */
+.adlabel{
+  display:inline-block;
+  background:var(--gold-pale);
+  border:1px solid rgba(184,136,42,.25);
+  border-radius:6px;
+  padding:2px 8px;
+  font-size:10px;
+  font-weight:700;
+  color:var(--gold);
+  letter-spacing:.5px;
+  margin-bottom:12px;
+}
+
+footer{
+  text-align:center;
+  font-size:11px;
+  color:var(--border);
+  padding:24px 0 0;
+  letter-spacing:.5px;
+}
+
+@media(max-width:460px){
+  .opts{grid-template-columns:1fr;}
+  .days-row{grid-template-columns:repeat(4,1fr);}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<!-- TOP BAR -->
+<div class="topbar">
+  <div>
+    <div class="logo-text">🎵 Студия «Твой голос»</div>
+    <div class="logo-sub">Нижнекамск · с 1999 года</div>
+  </div>
+  <div class="trust-badge">
+    <strong>25 лет</strong><br>авторская методика
+  </div>
+</div>
+
+<!-- PROGRESS -->
+<div class="progress-track" id="ptrack" style="display:none;">
+  <div class="progress-fill" id="pfill" style="width:0%"></div>
+</div>
+<div class="step-label" id="plabel" style="display:none;"></div>
+
+<!-- ══ SCREEN 0: INTRO ══ -->
+<div class="screen active" id="s0">
+  <div class="intro-wrap">
+    <div class="eyebrow">Бесплатный тест · 2 минуты</div>
+    <h1>Почему у вас<br>не получается петь —<br>и как это исправить<br><em>за 1 занятие</em></h1>
+    <p>Пройдите 5 вопросов. Узнайте свой вокальный тип и получите бесплатный пробный урок в студии.</p>
+    <div class="pills">
+      <div class="pill"><div class="pill-dot"></div>Взрослым с нуля</div>
+      <div class="pill"><div class="pill-dot"></div>Без муз. образования</div>
+      <div class="pill"><div class="pill-dot"></div>Бесплатно</div>
+    </div>
+  </div>
+
+  <div class="urgency">
+    <div class="urgency-dot"></div>
+    На этой неделе осталось 3 свободных места для пробного занятия
+  </div>
+
+  <div class="name-card">
+    <h2>Как вас зовут?</h2>
+    <p>Ваш результат будет персональным — со своим вокальным профилем и рекомендацией именно для вас.</p>
+    <input class="name-input" id="nameInp" type="text" placeholder="Введите ваше имя" autocomplete="given-name" maxlength="40">
+    <button class="btn btn-gold" onclick="startQuiz()">Начать тест →</button>
+  </div>
+
+  <div class="legal-box" style="margin-top:16px;">
+    <strong>ℹ️ Реклама</strong>
+    ИП [Ваше ФИО]. Нижнекамск, Рамус Молл, 5 этаж, блок В, каб. В-2.<br>
+    Квиз носит информационно-развлекательный характер. Профиль голоса — ориентировочный, определяется педагогом на занятии.
+  </div>
+</div>
+
+<!-- ══ Q1 ══ -->
+<div class="screen" id="s1">
+  <div class="q-head">
+    <h2 id="q1h">О чём вы мечтаете, когда думаете о пении?</h2>
+    <div class="hint">Выберите то, что откликается больше всего</div>
+  </div>
+  <div class="opts">
+    <div class="opt" data-q="1" data-v="karaoke" onclick="pick(this,1)">
+      <span class="opt-ico">🎤</span><span class="opt-lbl">Петь в карaoке без стеснения</span>
+    </div>
+    <div class="opt" data-q="1" data-v="song" onclick="pick(this,1)">
+      <span class="opt-ico">🎵</span><span class="opt-lbl">Красиво спеть любимую песню</span>
+    </div>
+    <div class="opt" data-q="1" data-v="stage" onclick="pick(this,1)">
+      <span class="opt-ico">🌟</span><span class="opt-lbl">Выступить на сцене</span>
+    </div>
+    <div class="opt" data-q="1" data-v="soul" onclick="pick(this,1)">
+      <span class="opt-ico">💆</span><span class="opt-lbl">Петь для себя — для радости</span>
+    </div>
+  </div>
+</div>
+
+<!-- ══ Q2 ══ -->
+<div class="screen" id="s2">
+  <div class="q-head">
+    <h2>Что сейчас мешает вам петь?</h2>
+    <div class="hint">Здесь нет неправильных ответов — у каждой проблемы есть решение</div>
+  </div>
+  <div class="opts">
+    <div class="opt" data-q="2" data-v="shy" onclick="pick(this,2)">
+      <span class="opt-ico">😬</span><span class="opt-lbl">Стесняюсь — кажется, голос некрасивый</span>
+    </div>
+    <div class="opt" data-q="2" data-v="pitch" onclick="pick(this,2)">
+      <span class="opt-ico">🎼</span><span class="opt-lbl">Не попадаю в ноты, пою фальшиво</span>
+    </div>
+    <div class="opt" data-q="2" data-v="tired" onclick="pick(this,2)">
+      <span class="opt-ico">😤</span><span class="opt-lbl">Голос быстро устаёт и «садится»</span>
+    </div>
+    <div class="opt" data-q="2" data-v="never" onclick="pick(this,2)">
+      <span class="opt-ico">🤷</span><span class="opt-lbl">Никогда серьёзно не пробовал/а</span>
+    </div>
+  </div>
+</div>
+
+<!-- ══ Q3 ══ -->
+<div class="screen" id="s3">
+  <div class="q-head">
+    <h2>Вы когда-нибудь занимались вокалом?</h2>
+    <div class="hint">Это поможет педагогу подготовиться к вашему занятию</div>
+  </div>
+  <div class="opts solo">
+    <div class="opt" data-q="3" data-v="zero" onclick="pick(this,3)">
+      <span class="opt-ico">🌱</span><span class="opt-lbl">Нет, с нуля — никогда не занимался/ась</span>
+    </div>
+    <div class="opt" data-q="3" data-v="little" onclick="pick(this,3)">
+      <span class="opt-ico">🎓</span><span class="opt-lbl">Немного — в детстве или в хоре</span>
+    </div>
+    <div class="opt" data-q="3" data-v="self" onclick="pick(this,3)">
+      <span class="opt-ico">🎧</span><span class="opt-lbl">Сам/а пробовал/а по YouTube</span>
+    </div>
+  </div>
+</div>
+
+<!-- ══ Q4 ══ -->
+<div class="screen" id="s4">
+  <div class="q-head">
+    <h2>Какую музыку хотите петь?</h2>
+    <div class="hint">Это определит ваш вокальный профиль</div>
+  </div>
+  <div class="opts">
+    <div class="opt" data-q="4" data-v="rock" onclick="pick(this,4)">
+      <span class="opt-ico">🎸</span><span class="opt-lbl">Рок, поп-рок — с душой и энергией</span>
+    </div>
+    <div class="opt" data-q="4" data-v="pop" onclick="pick(this,4)">
+      <span class="opt-ico">⭐</span><span class="opt-lbl">Современная эстрада, поп</span>
+    </div>
+    <div class="opt" data-q="4" data-v="jazz" onclick="pick(this,4)">
+      <span class="opt-ico">🎷</span><span class="opt-lbl">Джаз, блюз, soul</span>
+    </div>
+    <div class="opt" data-q="4" data-v="romance" onclick="pick(this,4)">
+      <span class="opt-ico">🌹</span><span class="opt-lbl">Русская эстрада, романсы</span>
+    </div>
+  </div>
+</div>
+
+<!-- ══ Q5 ══ -->
+<div class="screen" id="s5">
+  <div class="q-head">
+    <h2>Что для вас важнее всего на первом занятии?</h2>
+    <div class="hint">Педагог настроится именно на это</div>
+  </div>
+  <div class="opts solo">
+    <div class="opt" data-q="5" data-v="free" onclick="pick(this,5)">
+      <span class="opt-ico">🕊️</span><span class="opt-lbl">Почувствовать, что петь — не страшно и не стыдно</span>
+    </div>
+    <div class="opt" data-q="5" data-v="sound" onclick="pick(this,5)">
+      <span class="opt-ico">🔊</span><span class="opt-lbl">Услышать свой голос со стороны и понять его сильные стороны</span>
+    </div>
+    <div class="opt" data-q="5" data-v="start" onclick="pick(this,5)">
+      <span class="opt-ico">🗺️</span><span class="opt-lbl">Получить чёткий план — с чего начать и куда расти</span>
+    </div>
+  </div>
+</div>
+
+<!-- ══ RESULT ══ -->
+<div class="screen" id="sResult">
+
+  <div class="confetti-row">🎉🎤🎊</div>
+  <div class="hail" id="hailText">Поздравляем!</div>
+
+  <div class="profile-card" id="pCard">
+    <span class="p-ico" id="pIco">🎤</span>
+    <div class="p-name" id="pName">Профиль</div>
+    <div class="p-desc" id="pDesc">Описание</div>
+    <div class="p-tags" id="pTags"></div>
+  </div>
+
+  <div class="slots-box">
+    <span class="slots-icon">📅</span>
+    <div class="slots-text">
+      <strong>На этой неделе осталось 3 свободных места</strong>
+      Запишитесь сейчас — занятие бесплатное, без предоплаты
+    </div>
+  </div>
+
+  <div class="lesson-steps">
+    <h4>Что произойдёт на пробном занятии:</h4>
+    <div class="lstep">
+      <div class="lstep-num">1</div>
+      <div class="lstep-text"><strong>Педагог услышит ваш голос</strong>Без оценок и критики — просто знакомство с вашим природным звучанием</div>
+    </div>
+    <div class="lstep">
+      <div class="lstep-num">2</div>
+      <div class="lstep-text"><strong>Определит тип голоса и диапазон</strong>Это тот самый момент «вот это мой голос!» — многие уходят под впечатлением</div>
+    </div>
+    <div class="lstep">
+      <div class="lstep-num">3</div>
+      <div class="lstep-text"><strong>Покажет, с чего начать именно вам</strong>Конкретный план под ваш голос, мечту и ритм жизни</div>
+    </div>
+  </div>
+
+  <div class="testimonial">
+    <div class="ava">МА</div>
+    <div class="ava-text">
+      <p>«Думала, что у меня нет слуха вообще. После первого занятия спела любимую песню — слёзы были. Теперь занимаюсь уже 4 месяца.»</p>
+      <span>Марина А., 41 год · пришла с нуля</span>
+    </div>
+  </div>
+
+  <!-- FORM STEP 1 -->
+  <div class="form-card" id="formS1">
+    <div class="adlabel">🎁 Ваш подарок</div>
+    <h3>Запишитесь на бесплатное пробное занятие</h3>
+    <div class="form-sub">Без предоплаты и обязательств. Просто приходите — педагог сделает всё остальное.</div>
+
+    <div class="field" id="fg1">
+      <label>Имя</label>
+      <input class="finput" id="fName" type="text" placeholder="Уже знаем — введите фамилию или оставьте">
+      <div class="errmsg">Введите ваше имя</div>
+    </div>
+
+    <div class="field" id="fg2">
+      <label>Номер телефона</label>
+      <input class="finput" id="fPhone" type="tel" placeholder="+7 (___) ___-__-__" autocomplete="tel">
+      <div class="errmsg">Введите корректный номер</div>
+    </div>
+
+    <div class="consent-row" id="cRow">
+      <input type="checkbox" id="consent" required>
+      <label for="consent">Я даю согласие на обработку моих персональных данных (имя и телефон) в целях записи на занятие в студию «Твой голос». Данные не передаются третьим лицам. Согласие можно отозвать, написав на [ваш email].</label>
+    </div>
+    <div class="errmsg" id="consentErr" style="margin-bottom:10px;">Необходимо ваше согласие</div>
+
+    <button class="btn btn-gold" onclick="toStep2()">Да, хочу попробовать →</button>
+    <div class="btn-note">Без предоплаты · Без обязательств · 45 минут<br>Рамус Молл, 5 этаж, блок В, кабинет В-2</div>
+  </div>
+
+  <!-- FORM STEP 2 -->
+  <div class="form-card form-s2" id="formS2">
+    <h3>Выберите удобное время 🗓</h3>
+    <div class="form-sub">Мы свяжемся и подтвердим. Пн–Пт 14:00–22:00, Вс 16:00–22:00.</div>
+
+    <div class="field">
+      <label>Свободный день недели</label>
+      <div class="days-row">
+        <div class="dday" data-day="Понедельник" onclick="pickDay(this)">Пн</div>
+        <div class="dday" data-day="Вторник" onclick="pickDay(this)">Вт</div>
+        <div class="dday" data-day="Среда" onclick="pickDay(this)">Ср</div>
+        <div class="dday" data-day="Четверг" onclick="pickDay(this)">Чт</div>
+        <div class="dday" data-day="Пятница" onclick="pickDay(this)">Пт</div>
+        <div class="dday" data-day="Воскресенье" onclick="pickDay(this)">Вс</div>
+      </div>
+      <div class="errmsg" id="dayErr">Выберите удобный день</div>
+    </div>
+
+    <div class="field">
+      <label>Удобное время</label>
+      <div class="time-row">
+        <div id="ftfrom">
+          <select class="fsel" id="selFrom">
+            <option value="">От скольки</option>
+            <option>14:00</option><option>15:00</option><option>16:00</option>
+            <option>17:00</option><option>18:00</option><option>19:00</option>
+            <option>20:00</option><option>21:00</option>
+          </select>
+          <div class="errmsg">Укажите время от</div>
+        </div>
+        <div id="ftto">
+          <select class="fsel" id="selTo">
+            <option value="">До скольки</option>
+            <option>15:00</option><option>16:00</option><option>17:00</option>
+            <option>18:00</option><option>19:00</option><option>20:00</option>
+            <option>21:00</option><option>22:00</option>
+          </select>
+          <div class="errmsg">Укажите время до</div>
+        </div>
+      </div>
+    </div>
+
+    <button class="btn btn-gold" onclick="submitForm()" style="margin-top:4px;">Записаться на занятие ✓</button>
+    <div class="btn-note" style="margin-top:10px;">Данные уже сохранены. Осталось выбрать время.</div>
+  </div>
+</div>
+
+<!-- ══ THANKS ══ -->
+<div class="screen" id="sThanks">
+  <div class="thanks-wrap">
+    <span class="big-ico">🎤</span>
+    <h2>Отлично, <span id="tyName">друг</span>!</h2>
+    <p>Заявка принята. Мы позвоним и подтвердим время занятия.</p>
+    <p>Ничего готовить не нужно — просто приходите с хорошим настроением!</p>
+
+    <div class="info-card">
+      <div class="info-row">
+        <span class="info-ico">📍</span>
+        <div><strong>Рамус Молл, 5 этаж, блок В, кабинет В-2</strong><span>Нижнекамск</span></div>
+      </div>
+      <div class="info-row">
+        <span class="info-ico">🕐</span>
+        <div><strong>Пн–Пт: 14:00–22:00</strong><span>Воскресенье: 16:00–22:00</span></div>
+      </div>
+      <div class="info-row">
+        <span class="info-ico">🎓</span>
+        <div><strong>Авторская методика с 1999 года</strong><span>Взрослым с нуля — без требований</span></div>
+      </div>
+    </div>
+
+    <p style="font-size:.82rem;color:var(--muted);">Поделитесь квизом с подругой, которая тоже давно хотела попробовать 🎵</p>
+  </div>
+</div>
+
+<footer>Студия вокала «Твой голос» · Нижнекамск · ИП [Ваше ФИО] · Реклама</footer>
+
+</div>
+
+<script>
+const PROFILES = {
+  drama:{name:'Драматический голос',ico:'🔥',cls:'pc-drama',desc:'Мощь, страсть и глубина — ваша природа. Такие голоса созданы для сильных эмоций и настоящего звучания.',tags:['Сила тембра','Широкий диапазон','Эмоциональность'],gift:'На пробном педагог покажет, как раскрыть природную силу голоса — без напряжения и срывов.'},
+  lyric:{name:'Лирический голос',ico:'🌊',cls:'pc-lyric',desc:'Нежность, чувство и искренность — ваши козыри. Такие голоса трогают сердца, даже без громкости.',tags:['Мягкость','Задушевность','Чистота'],gift:'На пробном педагог найдёт ваш диапазон и подберёт первую песню, которая раскроет красоту вашего голоса.'},
+  jazz:{name:'Джазовый голос',ico:'🎷',cls:'pc-jazz',desc:'Свобода, характер и стиль — это про вас. Джазовые голоса живут в моменте и всегда звучат по-особенному.',tags:['Характер','Гибкость','Стиль'],gift:'На пробном вы почувствуете, что голос — это инструмент с характером. И этот характер уже есть у вас.'},
+  pop:{name:'Эстрадный голос',ico:'⭐',cls:'pc-pop',desc:'Яркость, харизма и сцена — ваша территория. Эстрадные голоса созданы быть услышанными.',tags:['Яркость','Харизма','Сценичность'],gift:'На пробном педагог покажет, как петь любимые песни без зажимов — свободно и с удовольствием.'}
+};
+
+let answers={}, userName='', selectedDay='';
+const BOT_TOKEN='YOUR_BOT_TOKEN';
+const CHAT_ID='YOUR_CHAT_ID';
+
+function getProfile(){
+  const s=answers[4];
+  if(s==='jazz') return 'jazz';
+  if(s==='romance') return 'lyric';
+  if(s==='rock') return 'drama';
+  return 'pop';
+}
+
+function startQuiz(){
+  const n=document.getElementById('nameInp').value.trim();
+  if(n.length<2){document.getElementById('nameInp').style.borderColor='var(--rose)';document.getElementById('nameInp').focus();return;}
+  userName=n.split(' ')[0];
+  document.getElementById('fName').value=n;
+  document.getElementById('q1h').textContent=userName+', о чём вы мечтаете, когда думаете о пении?';
+  show('s1');
+  document.getElementById('ptrack').style.display='block';
+  document.getElementById('plabel').style.display='block';
+  updateP(1);
+}
+
+function pick(el,q){
+  document.querySelectorAll(`.opt[data-q="${q}"]`).forEach(o=>o.classList.remove('sel'));
+  el.classList.add('sel');
+  answers[q]=el.dataset.v;
+  setTimeout(()=>{
+    if(q<5){show('s'+(q+1));updateP(q+1);}
+    else{showResult();}
+  },300);
+}
+
+function updateP(q){
+  const p=Math.round(((q-1)/5)*100);
+  document.getElementById('pfill').style.width=p+'%';
+  document.getElementById('plabel').textContent='Вопрос '+q+' из 5';
+}
+
+function showResult(){
+  const key=getProfile();
+  const p=PROFILES[key];
+  document.getElementById('hailText').textContent=userName+', ваш вокальный профиль определён!';
+  const card=document.getElementById('pCard');
+  card.className='profile-card '+p.cls;
+  document.getElementById('pIco').textContent=p.ico;
+  document.getElementById('pName').textContent=p.name;
+  document.getElementById('pDesc').textContent=p.desc;
+  document.getElementById('pTags').innerHTML=p.tags.map(t=>`<span class="p-tag">${t}</span>`).join('');
+  document.getElementById('pfill').style.width='100%';
+  document.getElementById('plabel').textContent='Результат готов!';
+  show('sResult');
+  setTimeout(()=>window.scrollTo({top:0,behavior:'smooth'}),50);
+}
+
+function pickDay(el){
+  document.querySelectorAll('.dday').forEach(d=>d.classList.remove('on'));
+  el.classList.add('on');
+  selectedDay=el.dataset.day;
+  document.getElementById('dayErr').style.display='none';
+}
+
+function toStep2(){
+  let ok=true;
+  const name=document.getElementById('fName').value.trim();
+  const phone=document.getElementById('fPhone').value.trim();
+  const cb=document.getElementById('consent');
+  const ce=document.getElementById('consentErr');
+
+  const fg1=document.getElementById('fg1');
+  if(name.length<2){fg1.classList.add('has-err');ok=false;}else{fg1.classList.remove('has-err');}
+
+  const fg2=document.getElementById('fg2');
+  const ph=phone.replace(/\D/g,'');
+  if(ph.length<10){fg2.classList.add('has-err');ok=false;}else{fg2.classList.remove('has-err');}
+
+  if(!cb.checked){ce.style.display='block';ok=false;}else{ce.style.display='none';}
+
+  if(!ok)return;
+  document.getElementById('formS1').style.display='none';
+  document.getElementById('formS2').style.display='block';
+  document.getElementById('formS2').classList.add('form-s2');
+  document.getElementById('formS2').style.display='block';
+  setTimeout(()=>document.getElementById('formS2').scrollIntoView({behavior:'smooth',block:'start'}),50);
+}
+
+function submitForm(){
+  let ok=true;
+  const from=document.getElementById('selFrom').value;
+  const to=document.getElementById('selTo').value;
+  const de=document.getElementById('dayErr');
+  const ftf=document.getElementById('ftfrom');
+  const ftt=document.getElementById('ftto');
+
+  if(!selectedDay){de.style.display='block';ok=false;}else{de.style.display='none';}
+  if(!from){ftf.classList.add('has-err');ok=false;}else{ftf.classList.remove('has-err');}
+  if(!to){ftt.classList.add('has-err');ok=false;}else{ftt.classList.remove('has-err');}
+  if(!ok)return;
+
+  const name=document.getElementById('fName').value.trim();
+  const phone=document.getElementById('fPhone').value.trim();
+  const key=getProfile();
+  const prof=PROFILES[key];
+
+  const dreamMap={karaoke:'Петь в карaoке',song:'Красиво спеть песню',stage:'Выступить на сцене',soul:'Петь для себя'};
+  const painMap={shy:'Стесняется',pitch:'Не попадает в ноты',tired:'Голос устаёт',never:'Никогда не пробовал/а'};
+  const expMap={zero:'С нуля',little:'Немного (хор/детство)',self:'Сам по YouTube'};
+
+  const msg=`🎤 НОВАЯ ЗАЯВКА — «Твой голос»\n\n👤 Имя: ${name}\n📞 Телефон: ${phone}\n📅 День: ${selectedDay}\n🕐 Время: ${from} – ${to}\n\n🎭 Профиль: ${prof.name}\n💭 Мечта: ${dreamMap[answers[1]]||'—'}\n😔 Проблема: ${painMap[answers[2]]||'—'}\n🎓 Опыт: ${expMap[answers[3]]||'—'}\n🎵 Стиль: ${answers[4]||'—'}\n🎯 Важно на первом уроке: ${answers[5]||'—'}`;
+
+  if(BOT_TOKEN!=='YOUR_BOT_TOKEN'){
+    fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`,{
+      method:'POST',headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({chat_id:CHAT_ID,text:msg})
+    }).catch(()=>{});
+  }
+
+  document.getElementById('tyName').textContent=userName||name.split(' ')[0];
+  document.getElementById('ptrack').style.display='none';
+  document.getElementById('plabel').style.display='none';
+  show('sThanks');
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+function show(id){
+  document.querySelectorAll('.screen').forEach(s=>{s.classList.remove('active');s.style.display='none';});
+  const el=document.getElementById(id);
+  el.style.display='block';
+  setTimeout(()=>el.classList.add('active'),10);
+}
+
+// phone format
+document.addEventListener('DOMContentLoaded',()=>{
+  const ph=document.getElementById('fPhone');
+  ph.addEventListener('input',function(){
+    let v=this.value.replace(/\D/g,'');
+    if(v.startsWith('8'))v='7'+v.slice(1);
+    if(v.startsWith('7')){
+      let r='+7';
+      if(v.length>1)r+=' ('+v.slice(1,4);
+      if(v.length>=4)r+=') '+v.slice(4,7);
+      if(v.length>=7)r+='-'+v.slice(7,9);
+      if(v.length>=9)r+='-'+v.slice(9,11);
+      this.value=r;
+    }
+  });
+  // pre-fill name from intro
+  document.getElementById('nameInp').addEventListener('keydown',function(e){
+    if(e.key==='Enter')startQuiz();
+  });
+});
+</script>
+</body>
+</html>
